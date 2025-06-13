@@ -1,0 +1,48 @@
+<div class="bg-gray-100 min-h-screen flex justify-center">
+    <div class="flex justify-center bg-white">
+        <img src="https://cdn.pixabay.com/photo/2015/10/31/12/00/question-1015308_640.jpg" alt="">
+    </div>
+
+    <div>
+        <div class="mx-auto text-center px-4 mt-12 text-2xl text-indigo-900 font-semibold">
+            Frequently Asked Questions
+        </div>
+
+        <div class="mt-8 mx-auto max-w-screen-sm lg:max-w-screen-lg flex flex-col lg:flex-row lg:flex-wrap">
+            <div *ngFor="let faq of faqs; let i = index" class="lg:w-1/1">
+                <div (click)="toggleFaq(i)"
+                    class="question-and-answer select-none cursor-pointer border-2 mx-8 my-3 px-6 py-4 rounded-lg text-sm group"
+                    [class.bg-white]="faq.open">
+                    <div class="flex justify-between">
+                        <div class="text-indigo-800 font-semibold">
+                            {{ faq.question }}
+                        </div>
+                        <div>
+                            <svg *ngIf="!faq.open"
+                                class="question-chevron group-hover:bg-gray-500 h-5 block text-indigo-800 bg-gray-400 rounded-full p-1"
+                                viewBox="0 0 20 20">
+                                <g stroke="currentColor" stroke-width="1" fill="currentColor" fill-rule="evenodd">
+                                    <polygon
+                                        points="9.29289322 12.9497475 10 13.6568542 15.6568542 8 14.2426407 6.58578644 10 10.8284271 5.75735931 6.58578644 4.34314575 8">
+                                    </polygon>
+                                </g>
+                            </svg>
+                            <svg *ngIf="faq.open"
+                                class="question-chevron group-hover:bg-gray-500 h-5 block text-indigo-800 bg-gray-400 rounded-full p-1"
+                                viewBox="0 0 20 20">
+                                <g stroke="currentColor" stroke-width="1" fill="currentColor" fill-rule="evenodd">
+                                    <polygon
+                                        points="10.7071068 7.05025253 10 6.34314575 4.34314575 12 5.75735931 13.4142136 10 9.17157288 14.2426407 13.4142136 15.6568542 12">
+                                    </polygon>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div *ngIf="faq.open" class="mt-2 leading-snug text-gray-700">
+                        {{ faq.answer }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
